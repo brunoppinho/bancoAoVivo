@@ -1,13 +1,12 @@
 package tech.ada.banco.model;
 
 import java.math.BigDecimal;
-import java.util.Random;
 
 public class Conta {
 
     private static int contadorDeContas = 0;
     private ModalidadeConta tipo;
-    private BigDecimal saldo;
+    protected BigDecimal saldo;
     private int numeroConta;
     private String agencia;
     private Pessoa titular;
