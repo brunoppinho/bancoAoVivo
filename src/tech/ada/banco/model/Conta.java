@@ -34,11 +34,23 @@ public class Conta {
     }
 
     public void deposito(BigDecimal valor) {
+        if (valor.compareTo(BigDecimal.ZERO) < 0) {
+            throw new RuntimeException("Valor menor que zero!");
+        }
+
         saldo = saldo.add(valor);
     }
 
     public void saque(BigDecimal valor) {
-        saldo = saldo.subtract(valor);
+        if (valor.compareTo(BigDecimal.ZERO) < 0) {
+            throw new RuntimeException("Valor menor que zero!");
+        }
+
+        if (valor.compareTo(saldo) > 0) {
+            throw new RuntimeException("Limite acima do saldo disponível!");
+        } else {
+            saldo = saldo.subtract(valor);
+        }
     }
 
     public int getNumeroConta() {
