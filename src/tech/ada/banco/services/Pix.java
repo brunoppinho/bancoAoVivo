@@ -1,4 +1,6 @@
-package tech.ada.banco.model;
+package tech.ada.banco.services;
+
+import tech.ada.banco.model.Conta;
 
 import java.math.BigDecimal;
 
