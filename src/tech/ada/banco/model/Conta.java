@@ -1,5 +1,7 @@
 package tech.ada.banco.model;
 
+import tech.ada.banco.exceptions.SaldoInsuficienteException;
+
 import java.math.BigDecimal;
 
 public class Conta {
@@ -46,7 +48,7 @@ public class Conta {
         }
 
         if (valor.compareTo(saldo) > 0) {
-            throw new RuntimeException("Limite acima do saldo disponível!");
+            throw new SaldoInsuficienteException();
         } else {
             saldo = saldo.subtract(valor);
         }
