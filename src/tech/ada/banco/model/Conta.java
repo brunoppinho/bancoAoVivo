@@ -7,11 +7,12 @@ import java.math.BigDecimal;
 public class Conta {
 
     private static int contadorDeContas = 0;
-    private ModalidadeConta tipo;
+    private static Conta[] contas = new Conta[100];
+    private final ModalidadeConta tipo;
     protected BigDecimal saldo;
     private int numeroConta;
-    private String agencia;
-    private Pessoa titular;
+    private final String agencia;
+    private final Pessoa titular;
 
     public Conta(ModalidadeConta tipo, Pessoa titular) {
         this.tipo = tipo;
@@ -19,6 +20,11 @@ public class Conta {
         agencia = "0001";
         saldo = BigDecimal.ZERO;
         escolheNumeroConta();
+        contas[contadorDeContas - 1] = this;
+    }
+
+    public static Conta obtemContaPeloNumero(int numeroConta) {
+        return Conta.contas[numeroConta - 1];
     }
 
     private void escolheNumeroConta() {

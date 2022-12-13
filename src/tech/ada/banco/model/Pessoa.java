@@ -5,22 +5,22 @@ import java.time.LocalDate;
 public class Pessoa {
 
     private LocalDate dataNascimento;
-    private String cpf;
+    private Documento documento;
     private String telefone;
     private String nome;
 
-    public Pessoa(String nome, String cpf, LocalDate dataNascimento) {
+    public Pessoa(String nome, Documento documento, LocalDate dataNascimento) {
         setDataNascimento(dataNascimento);
-        setCpf(cpf);
+        this.documento = documento;
         this.nome = nome;
     }
 
-    public Pessoa(String nome, String cpf, String dataNascimento) {
-        this(nome, cpf, LocalDate.parse(dataNascimento));
+    public Pessoa(String nome, Documento documento, String dataNascimento) {
+        this(nome, documento, LocalDate.parse(dataNascimento));
     }
 
     public String toString() {
-        return "Nome: " + nome + " telefone: " + telefone;
+        return "Nome: " + nome + " telefone: " + telefone + " e documento: " + documento.getValor();
     }
 
     public LocalDate getDataNascimento() {
@@ -35,15 +35,12 @@ public class Pessoa {
         }
     }
 
-    public String getCpf() {
-        return cpf;
+    public Documento getDocumento() {
+        return documento;
     }
 
-    public void setCpf(String cpf) {
-        if (cpf.length() != 11) {
-            throw new RuntimeException("Tamanho do CPF inválido.");
-        }
-        this.cpf = cpf;
+    public void setDocumento(Documento documento) {
+        this.documento = documento;
     }
 
     public String getTelefone() {
