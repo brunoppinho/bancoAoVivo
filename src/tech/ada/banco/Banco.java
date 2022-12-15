@@ -9,6 +9,7 @@ package tech.ada.banco;
 import tech.ada.banco.services.AberturaDeConta;
 import tech.ada.banco.services.Deposito;
 import tech.ada.banco.services.Pix;
+import tech.ada.banco.services.Saque;
 import tech.ada.banco.utils.LeitorTeclado;
 
 /**
@@ -24,6 +25,7 @@ public class Banco {
         System.out.println("Bem vindo ao banco Ada.");
         Pix pix = new Pix();
         Deposito deposito = new Deposito();
+        Saque saque = new Saque();
         boolean ligado = true;
         while (ligado) {
             menu();
@@ -43,7 +45,7 @@ public class Banco {
                     break;
 
                 case 3:
-                    // TODO: Sacar valor
+                    saque.executar();
                     break;
 
                 case 4:
