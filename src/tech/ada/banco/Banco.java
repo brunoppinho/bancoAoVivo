@@ -8,6 +8,9 @@ package tech.ada.banco;
 
 import tech.ada.banco.services.AberturaDeConta;
 import tech.ada.banco.services.Deposito;
+import tech.ada.banco.services.Menu;
+import tech.ada.banco.services.MenuIngles;
+import tech.ada.banco.services.ObterSaldo;
 import tech.ada.banco.services.Pix;
 import tech.ada.banco.services.Saque;
 import tech.ada.banco.utils.LeitorTeclado;
@@ -26,9 +29,10 @@ public class Banco {
         Pix pix = new Pix();
         Deposito deposito = new Deposito();
         Saque saque = new Saque();
+        Menu menu = new MenuIngles();
         boolean ligado = true;
         while (ligado) {
-            menu();
+            menu.mostrar();
             int opcao = LeitorTeclado.getNumero("Digite uma das opções.");
             switch (opcao) {
                 case 0:
@@ -53,7 +57,7 @@ public class Banco {
                     break;
 
                 case 5:
-                    // TODO: Mostrar saldo
+                    ObterSaldo.executar();
                     break;
 
                 default:
@@ -61,17 +65,6 @@ public class Banco {
                     break;
             }
         }
-    }
-
-    private static void menu() {
-        System.out.println("Escolha uma das opções abaixo.");
-        System.out.println("0 - Para Encerrar.");
-        System.out.println("1 - Para abrir uma conta.");
-        System.out.println("2 - Para depositar um valor.");
-        System.out.println("3 - Para retirar um valor.");
-        System.out.println("4 - Para realizar uma transferência via PIX.");
-        System.out.println("5 - Obter saldo da conta.");
-
     }
 
 }

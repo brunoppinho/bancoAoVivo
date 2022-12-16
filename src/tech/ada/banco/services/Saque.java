@@ -1,11 +1,12 @@
 package tech.ada.banco.services;
 
+import tech.ada.banco.exceptions.SaldoInsuficienteException;
 import tech.ada.banco.model.Conta;
 import tech.ada.banco.utils.LeitorTeclado;
 
 import java.math.BigDecimal;
 
-public class Saque {
+public final class Saque {
 
     public void executar() {
         // Etapa 1
@@ -28,7 +29,12 @@ public class Saque {
     }
 
     public void executar(Conta conta, int valor) {
-        conta.saque(BigDecimal.valueOf(valor));
-        System.out.println("O saldo resultante após o saque é de R$" + conta.getSaldo());
+        try {
+            conta.saque(BigDecimal.valueOf(valor));
+            System.out.println("O saldo resultante após o saque é de R$" + conta.getSaldo());
+        } catch (SaldoInsuficienteException e) {
+            System.err.println("Saque não pode ser efetuado pois o saldo de " + conta.getSaldo() + " foi insuficiente" +
+                    ".");
+        }
     }
 }
